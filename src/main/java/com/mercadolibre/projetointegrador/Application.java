@@ -18,5 +18,10 @@ public class Application {
 		ScopeUtils.calculateScopeSuffix();
 		new SpringApplicationBuilder(SpringConfig.class).registerShutdownHook(true)
 				.run(args);
+
+
+
+
+
 	}
 }
