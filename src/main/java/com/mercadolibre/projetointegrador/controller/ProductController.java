@@ -1,7 +1,6 @@
 package com.mercadolibre.projetointegrador.controller;
 
 
-
 import com.mercadolibre.projetointegrador.dtos.response.ProductSectionResponseDTO;
 import com.mercadolibre.projetointegrador.model.Product;
 import com.mercadolibre.projetointegrador.service.crud.impl.ProductServiceImpl;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
-import java.util.Set;
 
 import static com.mercadolibre.projetointegrador.service.impl.SessionServiceImpl.getUsername;
 
@@ -27,7 +25,6 @@ public class ProductController {
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.CREATED)
     public Product update(
-            //TODO validate seller or supervisor
             @Valid @RequestBody Product product){
         return productService.update(product);
     }
@@ -35,7 +32,6 @@ public class ProductController {
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
     public String delete(
-            //TODO validate seller or supervisor
             @Valid @PathVariable Long id){
         productService.delete(id);
         return "Product of Id " + id + " deleted.";
@@ -65,7 +61,6 @@ public class ProductController {
         return productService.findAllBySellerName(name);
     }
 
-    //TODO Usar paginação ao invés de fazer a ordenação na mão
     @GetMapping("/section")
     @ResponseStatus(HttpStatus.OK)
     public List<ProductSectionResponseDTO> findSectionsByProductId(
@@ -74,9 +69,5 @@ public class ProductController {
             @RequestHeader("Authorization") String token){
         return productService.findSectionByProductId(id,orderBy, SessionServiceImpl.getUsername(token));
     }
-
-    //TODO find by warehouse?
-
-    //TODO find by category
 
 }

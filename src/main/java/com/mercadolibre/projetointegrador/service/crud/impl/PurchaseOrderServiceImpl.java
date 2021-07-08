@@ -30,7 +30,6 @@ public class PurchaseOrderServiceImpl implements ICRUD<PurchaseOrder> {
         PurchaseOrder purchaseOrder = buildPurchaseOrder(purchaseOrderDTO);
         batchService.retrieveProductsFromBatches(purchaseOrderDTO);
         repository.save(purchaseOrder);
-
         return calculateTotalOrderValue(purchaseOrder);
     }
 

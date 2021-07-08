@@ -1,6 +1,5 @@
 package com.mercadolibre.projetointegrador.service.crud.impl;
 
-
 import com.mercadolibre.projetointegrador.dtos.BatchDTO;
 import com.mercadolibre.projetointegrador.dtos.SectionDTO;
 import com.mercadolibre.projetointegrador.dtos.response.ProductSectionResponseDTO;
@@ -16,10 +15,10 @@ import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.ModelMap;
-
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
 
 @RequiredArgsConstructor
 @Service
@@ -30,7 +29,6 @@ public class ProductServiceImpl implements ICRUD<Product> {
     private final EmployeeServiceImpl employeeService;
     private final InboundOrderRepository inboundRepository;
     private final ModelMapper modelMapper;
-
 
     @Override
     public Product create(Product product) {
@@ -151,5 +149,4 @@ public class ProductServiceImpl implements ICRUD<Product> {
 
         return builtResponse;
     }
-
 }
