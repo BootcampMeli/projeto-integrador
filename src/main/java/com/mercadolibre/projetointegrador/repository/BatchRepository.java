@@ -2,6 +2,7 @@ package com.mercadolibre.projetointegrador.repository;
 
 import com.mercadolibre.projetointegrador.model.Batch;
 
+import com.mercadolibre.projetointegrador.model.Product;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -29,4 +30,5 @@ public interface BatchRepository extends JpaRepository<Batch, Long> {
                                                   LocalDate endDate,
                                                   Pageable pageable);
 
+    List<Batch> findBatchesByProductIdAndDueDateBefore(Long id, LocalDate today);
 }

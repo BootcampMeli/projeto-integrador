@@ -42,5 +42,14 @@ public class BatchController {
         return batchService.findByDueDateCategoryBetweenDates(category, days, order);
     }
 
+    @GetMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    @Operation(summary = "US06 - Check Batch Due Date By Product",
+            responses = {
+            @ApiResponse(description = "Successful Operation", responseCode = "200", content = @Content(mediaType = "application/json", schema = @Schema(implementation = BatchDueDateResponseDTO.class))),
+    })
+    public List<BatchDueDateResponseDTO> findByProduct(@PathVariable Long id){
+        return batchService.findByProductId(id);
+    }
 
 }

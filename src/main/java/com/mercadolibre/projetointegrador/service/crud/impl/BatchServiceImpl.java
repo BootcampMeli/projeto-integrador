@@ -22,6 +22,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
@@ -148,5 +149,21 @@ public class BatchServiceImpl implements ICRUD<Batch> {
         return batchMapper.mapListDtoReponseToEntity(
                 batchRepository.findDueDateBySectionOrdered(category, today,finalDate, pageable).getContent()
         );
+    }
+
+    public List<BatchDueDateResponseDTO> findByProductId(Long id){
+        List<Batch> batches = batchRepository
+                .findBatchesByProductIdAndDueDateBefore(id, LocalDate.now());
+
+        List<BatchDueDateResponseDTO> response = new ArrayList<>();
+
+        for (Batch b: batches) {
+            response.add(modelMapper.map(b, BatchDueDateResponseDTO.class));
+        }
+
+        if(response.isEmpty()){
+            throw new NotFoundException("No expired batches found for product with id " + id);
+        }
+        return response;
     }
 }
