@@ -13,7 +13,6 @@ import com.mercadolibre.projetointegrador.repository.BatchRepository;
 import com.mercadolibre.projetointegrador.service.crud.ICRUD;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -52,10 +51,13 @@ public class BatchServiceImpl implements ICRUD<Batch> {
         List<Batch> batches = new ArrayList<>();
 
         for (BatchDTO batch : batchDTOS) {
+            // procura o produto da batch existente
             Product product = productService.findById(batch.getProductId());
+            // procura o id da batch
             Batch foundBatch = findById(batch.getBatchNumber());
             batch.setBatchNumber(foundBatch.getId());
             Batch batchItem = modelMapper.map(batch, Batch.class);
+            // seta o produto na batch
             batchItem.setProduct(product);
             batches.add(batchItem);
         }

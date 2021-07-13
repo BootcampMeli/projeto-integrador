@@ -23,6 +23,7 @@ WHERE NOT EXISTS (SELECT role_name FROM role WHERE role_name = 'ROLE_EMPLOYEE') 
 --
 -- # Insert Warehouses
 --
+/*
 INSERT IGNORE INTO `warehouse` (`id`,`name`) VALUES (1,'Nordeste');
 INSERT IGNORE INTO `warehouse` (`id`,`name`) VALUES (2,'SãoPaulo1');
 INSERT IGNORE INTO `warehouse` (`id`,`name`) VALUES (3,'SãoPaulo2');
@@ -138,3 +139,4 @@ INSERT IGNORE INTO user_role VALUES(8, 2);
 INSERT IGNORE INTO user_role VALUES(9, 2);
 INSERT IGNORE INTO user_role VALUES(10, 2);
 INSERT IGNORE INTO user_role VALUES(11, 2);
+*/

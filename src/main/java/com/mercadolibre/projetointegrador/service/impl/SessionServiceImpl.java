@@ -90,13 +90,4 @@ public class SessionServiceImpl implements ISessionService {
         }
         return null;
     }
-
-/*    private String getUsername(String token){
-        if(token != null && token.startsWith("Bearer ")) {
-            String username = SessionServiceImpl.getUsername(token.replace("Bearer ", ""));
-            return username;
-        }
-        return null;
-    }*/
-
 }

@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 @Builder
 @NoArgsConstructor
@@ -28,8 +27,5 @@ public class PurchaseOrder {
     @OneToMany(mappedBy = "purchaseOrder",
             cascade = CascadeType.ALL,
             orphanRemoval = true)
-//    @JoinTable(name="purchase_order_products",
-//            joinColumns={@JoinColumn(name="product_id")},
-//            inverseJoinColumns={@JoinColumn(name="purchase_order_id")})
     private List<PurchaseProduct> products = new ArrayList<>();
 }

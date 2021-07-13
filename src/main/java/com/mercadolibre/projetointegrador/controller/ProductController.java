@@ -24,6 +24,11 @@ public class ProductController {
 
     private final ProductServiceImpl productService;
 
+    @Operation(summary = "US06 - Products - Create a new product", responses = {
+            @ApiResponse(description = "Successful Operation", responseCode = "201",
+                    content = @Content(mediaType = "application/json",
+                            schema = @Schema(implementation = Product.class)))
+    })
     @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
     public Product create(@Valid @RequestBody Product product){
@@ -31,7 +36,9 @@ public class ProductController {
     }
 
     @Operation(summary = "US02 - Get all Products", responses = {
-            @ApiResponse(description = "Successful Operation", responseCode = "200", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Product.class))),
+            @ApiResponse(description = "Successful Operation", responseCode = "200",
+                    content = @Content(mediaType = "application/json",
+                            schema = @Schema(implementation = Product.class)))
     })
     @GetMapping("/")
     @ResponseStatus(HttpStatus.OK)
@@ -39,29 +46,46 @@ public class ProductController {
         return productService.findAll();
     }
 
+    @Operation(summary = "US02 - Get a product by it's ID", responses = {
+            @ApiResponse(description = "Successful Operation", responseCode = "200",
+                    content = @Content(mediaType = "application/json",
+                            schema = @Schema(implementation = Product.class)))
+    })
     @GetMapping("/id/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Product findById(@PathVariable Long id){
         return productService.findById(id);
     }
 
+    @Operation(summary = "US02 - Get a product by it's name", responses = {
+            @ApiResponse(description = "Successful Operation", responseCode = "200",
+                    content = @Content(mediaType = "application/json",
+                            schema = @Schema(implementation = Product.class)))
+    })
     @GetMapping("/name/{name}")
     @ResponseStatus(HttpStatus.OK)
     public Product findByName(@PathVariable String name){
         return productService.findByName(name);
     }
 
+    @Operation(summary = "US02 - Get all Products from a seller by it's name", responses = {
+            @ApiResponse(description = "Successful Operation", responseCode = "200",
+                    content = @Content(mediaType = "application/json",
+                            schema = @Schema(implementation = Product.class)))
+    })
     @GetMapping("/seller/{name}")
     @ResponseStatus(HttpStatus.OK)
     public List<Product> findAllBySellerName(@PathVariable String name){
         return productService.findAllBySellerName(name);
     }
 
+    @Operation(summary = "US03 - Check Product Location in Warehouse", responses = {
+            @ApiResponse(description = "Successful Operation", responseCode = "200",
+                    content = @Content(mediaType = "application/json",
+                            schema = @Schema(implementation = ProductSectionResponseDTO.class)))
+    })
     @GetMapping("/section")
     @ResponseStatus(HttpStatus.OK)
-    @Operation(summary = "US03 - Check Product Location in Warehouse", responses = {
-            @ApiResponse(description = "Successful Operation", responseCode = "200", content = @Content(mediaType = "application/json", schema = @Schema(implementation = ProductSectionResponseDTO.class))),
-    })
     public List<ProductSectionResponseDTO> findSectionsByProductId(
             @RequestParam(value = "product-id") Long id,
             @RequestParam(value = "order-by", required = false, defaultValue = "") String orderBy,
@@ -69,11 +93,13 @@ public class ProductController {
         return productService.findSectionStockByProductId(id,orderBy, SessionServiceImpl.getUsername(token));
     }
 
+    @Operation(summary = "US04 - Check Product Stock in Warehouse", responses = {
+            @ApiResponse(description = "Successful Operation", responseCode = "200",
+                    content = @Content(mediaType = "application/json",
+                            schema = @Schema(implementation = WarehouseStockResponseDTO.class)))
+    })
     @GetMapping("/warehouse")
     @ResponseStatus(HttpStatus.OK)
-    @Operation(summary = "US04 - Check Product Stock in Warehouse", responses = {
-            @ApiResponse(description = "Successful Operation", responseCode = "200", content = @Content(mediaType = "application/json", schema = @Schema(implementation = WarehouseStockResponseDTO.class))),
-    })
     public WarehouseStockResponseDTO findProductstockInWarehouse(
             @RequestParam(value = "product-id") Long id){
         return productService.findProductstockInWarehouses(id);

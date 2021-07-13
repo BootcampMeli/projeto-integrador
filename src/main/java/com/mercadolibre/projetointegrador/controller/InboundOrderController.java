@@ -4,7 +4,6 @@ import com.mercadolibre.projetointegrador.dtos.BatchDTO;
 import com.mercadolibre.projetointegrador.dtos.InboundOrderDTO;
 import com.mercadolibre.projetointegrador.dtos.response.InboundOrderResponseDTO;
 import com.mercadolibre.projetointegrador.service.crud.impl.InboundOrderServiceImpl;
-import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -26,7 +25,9 @@ public class InboundOrderController {
     private final InboundOrderServiceImpl inboundOrderService;
 
     @Operation(summary = "US01 - Create Inbound Order", responses = {
-            @ApiResponse(description = "Successful Operation", responseCode = "200", content = @Content(mediaType = "application/json", schema = @Schema(implementation = InboundOrderResponseDTO.class))),
+            @ApiResponse(description = "Successful Operation", responseCode = "201",
+                    content = @Content(mediaType = "application/json",
+                            schema = @Schema(implementation = InboundOrderResponseDTO.class))),
     })
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
@@ -37,7 +38,9 @@ public class InboundOrderController {
     }
 
     @Operation(summary = "US01 - Update Inbound Order", responses = {
-            @ApiResponse(description = "Successful Operation", responseCode = "201", content = @Content(mediaType = "application/json", schema = @Schema(implementation = BatchDTO.class))),
+            @ApiResponse(description = "Successful Operation", responseCode = "201",
+                    content = @Content(mediaType = "application/json",
+                            schema = @Schema(implementation = BatchDTO.class))),
     })
     @PutMapping("{id}")
     @ResponseStatus(HttpStatus.CREATED)

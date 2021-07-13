@@ -28,10 +28,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.GET, "/api/v1/fresh-products/duedate/list").hasAnyAuthority("ROLE_SUPERVISOR", "ROLE_ADMIN")
                 //products
                 .antMatchers(HttpMethod.POST, "/api/v1/fresh-products/create").hasAnyAuthority("ROLE_SELLER","ROLE_SUPERVISOR", "ROLE_ADMIN")
-                /*
-                .antMatchers(HttpMethod.PUT, "/api/v1/fresh-products/").hasAnyAuthority("ROLE_SELLER","ROLE_SUPERVISOR", "ROLE_ADMIN")
-                .antMatchers(HttpMethod.DELETE, "/api/v1/fresh-products/{id}").hasAnyAuthority("ROLE_SELLER","ROLE_SUPERVISOR", "ROLE_ADMIN")
-                */
                 .antMatchers(HttpMethod.GET, "/api/v1/fresh-products/").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/v1/fresh-products/id/").permitAll()
                 .antMatchers(HttpMethod.GET, "/api/v1/fresh-products/name/").permitAll()
@@ -40,41 +36,24 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.GET, "/api/v1/fresh-products/warehouse/").permitAll()
                 // buyers
                 .antMatchers(HttpMethod.POST, "/api/v1/fresh-products/buyers/create").hasAnyAuthority("ROLE_SUPERVISOR", "ROLE_ADMIN")
-/*
-                .antMatchers(HttpMethod.PUT, "/api/v1/fresh-products/buyers/").hasAnyAuthority("ROLE_SUPERVISOR", "ROLE_ADMIN")
-                .antMatchers(HttpMethod.DELETE, "/api/v1/fresh-products/buyers/").hasAnyAuthority("ROLE_SUPERVISOR", "ROLE_ADMIN")
-*/
                 .antMatchers(HttpMethod.GET, "/api/v1/fresh-products/buyers/").hasAnyAuthority("ROLE_SUPERVISOR", "ROLE_ADMIN")
                 .antMatchers(HttpMethod.GET, "/api/v1/fresh-products/buyers/id/").hasAnyAuthority("ROLE_SUPERVISOR", "ROLE_ADMIN")
                 .antMatchers(HttpMethod.GET, "/api/v1/fresh-products/buyers/name/").hasAnyAuthority("ROLE_SUPERVISOR", "ROLE_ADMIN")
                 // sellers
                 .antMatchers(HttpMethod.POST, "/api/v1/fresh-products/sellers/create").hasAnyAuthority("ROLE_SUPERVISOR", "ROLE_ADMIN")
-                /*
-                .antMatchers(HttpMethod.PUT, "/api/v1/fresh-products/sellers/").hasAnyAuthority("ROLE_SUPERVISOR", "ROLE_ADMIN")
-                .antMatchers(HttpMethod.DELETE, "/api/v1/fresh-products/sellers/").hasAnyAuthority("ROLE_SUPERVISOR", "ROLE_ADMIN")
-                */
                 .antMatchers(HttpMethod.GET, "/api/v1/fresh-products/sellers/").hasAnyAuthority("ROLE_SUPERVISOR", "ROLE_ADMIN")
                 .antMatchers(HttpMethod.GET, "/api/v1/fresh-products/sellers/id/").hasAnyAuthority("ROLE_SUPERVISOR", "ROLE_ADMIN")
                 .antMatchers(HttpMethod.GET, "/api/v1/fresh-products/sellers/name/").hasAnyAuthority("ROLE_SUPERVISOR", "ROLE_ADMIN")
                 // employees
                 .antMatchers(HttpMethod.POST, "/api/v1/fresh-products/employees/create").hasAnyAuthority("ROLE_SUPERVISOR", "ROLE_ADMIN")
-                /*
-                .antMatchers(HttpMethod.PUT, "/api/v1/fresh-products/employees/").hasAnyAuthority("ROLE_SUPERVISOR", "ROLE_ADMIN")
-                .antMatchers(HttpMethod.DELETE, "/api/v1/fresh-products/employees/").hasAnyAuthority("ROLE_SUPERVISOR", "ROLE_ADMIN")
-                */
                 .antMatchers(HttpMethod.GET, "/api/v1/fresh-products/employees/").hasAnyAuthority("ROLE_SUPERVISOR", "ROLE_ADMIN")
                 .antMatchers(HttpMethod.GET, "/api/v1/fresh-products/employees/id/").hasAnyAuthority("ROLE_SUPERVISOR", "ROLE_ADMIN")
                 .antMatchers(HttpMethod.GET, "/api/v1/fresh-products/employees/name/").hasAnyAuthority("ROLE_SUPERVISOR", "ROLE_ADMIN")
                 // supervisors
                 .antMatchers(HttpMethod.POST, "/api/v1/fresh-products/supervisors/create").hasAnyAuthority("ROLE_SUPERVISOR", "ROLE_ADMIN")
-                /*
-                .antMatchers(HttpMethod.PUT, "/api/v1/fresh-products/supervisors/").hasAnyAuthority("ROLE_SUPERVISOR", "ROLE_ADMIN")
-                .antMatchers(HttpMethod.DELETE, "/api/v1/fresh-products/supervisors/").hasAnyAuthority("ROLE_SUPERVISOR", "ROLE_ADMIN")
-                */
-                .antMatchers(HttpMethod.GET, "/api/v1/fresh-products/supervisors/all").hasAnyAuthority("ROLE_SUPERVISOR", "ROLE_ADMIN")
+                .antMatchers(HttpMethod.GET, "/api/v1/fresh-products/supervisors/").hasAnyAuthority("ROLE_SUPERVISOR", "ROLE_ADMIN")
                 .antMatchers(HttpMethod.GET, "/api/v1/fresh-products/supervisors/id/").hasAnyAuthority("ROLE_SUPERVISOR", "ROLE_ADMIN")
                 .antMatchers(HttpMethod.GET, "/api/v1/fresh-products/supervisors/name/").hasAnyAuthority("ROLE_SUPERVISOR", "ROLE_ADMIN")
-
 
                 .anyRequest().authenticated();
     }

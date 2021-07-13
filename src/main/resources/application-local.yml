@@ -9,11 +9,11 @@ spring:
     #db: ${SECRET_DATABASE}
     db: g3projdb
 
-    #username: ${SECRET_USER}
-    #password: ${SECRET_PASS}
+    username: root
+    password: user
 
-    username:
-    password:
+    #username:
+    #password:
     initialization-mode: always
 
   jpa:

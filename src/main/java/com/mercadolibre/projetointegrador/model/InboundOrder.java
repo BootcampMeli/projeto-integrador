@@ -25,7 +25,6 @@ public class InboundOrder {
     @JoinColumn(name = "section_id")
     private Section section;
 
-//    @OneToMany(mappedBy = "inboundOrder", fetch = FetchType.EAGER)
     @OneToMany(
             cascade = CascadeType.ALL,
             orphanRemoval = true

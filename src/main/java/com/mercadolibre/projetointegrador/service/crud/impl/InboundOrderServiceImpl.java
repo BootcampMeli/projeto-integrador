@@ -28,13 +28,18 @@ public class InboundOrderServiceImpl implements ICRUD<InboundOrder> {
     private final BatchServiceImpl batchService;
 
     public InboundOrderResponseDTO create(InboundOrderDTO inboundOrderDTO, String username) {
+        // monta a ordem
         InboundOrder inboundOrder = validateInboundOrder(inboundOrderDTO, username);
+        // insere a quantidade no estoque
         inboundOrder.setBatchStock(batchService.create(inboundOrderDTO.getBatchStock()));
+        // cria uma ordem salva
         InboundOrder savedInboundOrder = create(inboundOrder);
+        // cria uma lista de batches para a ordem
         List<BatchDTO> batchDTOS = batchMapper.mapListDtoToEntity(
                 findById(savedInboundOrder.getId())
                         .getBatchStock());
 
+        // retorna a ordem criada com id e batches
         return new InboundOrderResponseDTO().builder()
                 .id(inboundOrder.getId())
                 .batchStock(batchDTOS)
@@ -44,11 +49,11 @@ public class InboundOrderServiceImpl implements ICRUD<InboundOrder> {
     public List<BatchDTO> update(InboundOrderDTO inboundOrderDTO, Long idInboundOrder, String username) {
         InboundOrder inboundOrder = validateInboundOrder(inboundOrderDTO, username);
         inboundOrder.setId(idInboundOrder);
-
+        // atualiza a ordem de acordo com o id informado
         inboundOrder.setBatchStock(
                 batchService.update(inboundOrderDTO.getBatchStock())
         );
-
+        // retorna a lista atualizada
         return batchMapper.mapListDtoToEntity(
                 update(inboundOrder)
                         .getBatchStock()
@@ -83,7 +88,7 @@ public class InboundOrderServiceImpl implements ICRUD<InboundOrder> {
     }
 
     private InboundOrder validateInboundOrder(InboundOrderDTO inboundOrderDTO, String username) {
-
+        // valida um usuario registrando é um supervisor
         Supervisor supervisor = supervisorService.findById(employeeService.findByUsername(username).getId());
 
         Section section = sectionService.findSectionBySectionCodeAndWarehouseId(inboundOrderDTO.getSection());
