@@ -63,7 +63,9 @@ public class ProductServiceImpl implements ICRUD<Product> {
     }
 
     public List<Product> findAllBySellerName(String name) {
-        return productRepository.findAllBySeller(sellerRepository.findSellerByName(name));
+        List<Product> list = productRepository.findAllBySeller(sellerRepository.findSellerByName(name));
+        if (list.isEmpty()) throw new NotFoundException(name + " não possui produtos registrados");
+        return list;
     }
 
     public Product findByName(String name) {
