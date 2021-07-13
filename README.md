@@ -13,14 +13,11 @@
 
 3. A aplicação está setada para rodar na porta 8082
 
----
-
 # Documentação da API:
 
 [Postman](https://documenter.getpostman.com/view/15986728/Tzm8FvZd)
 
-[Requisito 6](https://drive.google.com/file/d/14eZqm_aLkpx_drItrLUutSfIz8zAjhw3/view?usp=sharing)
----
+[Requisito 06](https://drive.google.com/file/d/14eZqm_aLkpx_drItrLUutSfIz8zAjhw3/view?usp=sharing)
 
 # Diagrama de classes:
 
