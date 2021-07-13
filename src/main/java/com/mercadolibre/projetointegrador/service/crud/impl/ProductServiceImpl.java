@@ -70,6 +70,12 @@ public class ProductServiceImpl implements ICRUD<Product> {
         return productRepository.findByName(name);
     }
 
+    public Product findProductByName(String name) {
+        return productRepository.findProductByName(name)
+                .orElseThrow(() -> new NotFoundException("Produto de nome: " + name + " não encontrado"));
+    }
+
+
     public List<ProductSectionResponseDTO> findSectionStockByProductId(Long productId, String orderBy, String username) {
         Warehouse warehouse = employeeService.findByUsername(username).getWarehouse();
         Map<Section, List<Batch>> sectionBatches = findBatchStockGroupBySection(findById(productId), warehouse);
