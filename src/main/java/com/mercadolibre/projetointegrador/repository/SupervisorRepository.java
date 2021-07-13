@@ -11,4 +11,5 @@ public interface SupervisorRepository extends JpaRepository<Supervisor, Long> {
 
     Optional<Supervisor> findSupervisorByUsername(String username);
 
+    Optional<Supervisor> findByName(String name);
 }

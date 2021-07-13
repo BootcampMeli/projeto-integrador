@@ -24,25 +24,16 @@ public class ProductController {
 
     private final ProductServiceImpl productService;
 
-    @PutMapping("/{id}")
+    @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
-    public Product update(
-            @Valid @RequestBody Product product){
-        return productService.update(product);
-    }
-
-    @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
-    public String delete(
-            @Valid @PathVariable Long id){
-        productService.delete(id);
-        return "Product of Id " + id + " deleted.";
+    public Product create(@Valid @RequestBody Product product){
+        return productService.create(product);
     }
 
     @Operation(summary = "US02 - Get all Products", responses = {
             @ApiResponse(description = "Successful Operation", responseCode = "200", content = @Content(mediaType = "application/json", schema = @Schema(implementation = Product.class))),
     })
-    @GetMapping
+    @GetMapping("/")
     @ResponseStatus(HttpStatus.OK)
     public List<Product> findAllProducts(){
         return productService.findAll();

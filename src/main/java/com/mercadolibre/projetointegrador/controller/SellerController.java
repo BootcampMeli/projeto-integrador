@@ -1,10 +1,8 @@
 package com.mercadolibre.projetointegrador.controller;
 
 
-import com.mercadolibre.projetointegrador.model.Product;
+import com.mercadolibre.projetointegrador.dtos.UserDTO;
 import com.mercadolibre.projetointegrador.model.Seller;
-import com.mercadolibre.projetointegrador.service.crud.impl.ProductServiceImpl;
-import com.mercadolibre.projetointegrador.service.crud.impl.SectionServiceImpl;
 import com.mercadolibre.projetointegrador.service.crud.impl.SellerServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -20,53 +18,28 @@ public class SellerController {
 
     private final SellerServiceImpl sellerService;
 
-    @PostMapping
+    @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
     public Seller create(
-            //TODO validate seller
             @Valid @RequestBody Seller seller){
         return sellerService.create(seller);
     }
 
-    @PutMapping("{id}")
-    @ResponseStatus(HttpStatus.CREATED)
-    public Seller update(
-            //TODO validate seller or supervisor
-            @Valid @RequestBody Seller seller){
-        return sellerService.update(seller);
-    }
-
-    @DeleteMapping("/{id}")
+    @GetMapping("/")
     @ResponseStatus(HttpStatus.OK)
-    public String delete(
-            //TODO validate seller or supervisor
-            @Valid @PathVariable Long id){
-        sellerService.delete(id);
-        return "Seller of Id " + id + " deleted.";
+    public List<UserDTO> findAllSellers(){
+        return sellerService.findAllSellers();
     }
 
-    @GetMapping
+    @GetMapping("/id/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public List<Seller> findAllProducts(){
-        return sellerService.findAll();
+    public UserDTO findById(@PathVariable Long id){
+        return sellerService.findSellerById(id);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/name/{name}")
     @ResponseStatus(HttpStatus.OK)
-    public Seller findById(@PathVariable Long id){
-        return sellerService.findById(id);
+    public UserDTO findByName(@PathVariable String name){
+        return sellerService.findSellerByName(name);
     }
-
-    @GetMapping("/{name}")
-    @ResponseStatus(HttpStatus.OK)
-    public Seller findByName(@PathVariable String name){
-        return sellerService.findByName(name);
-    }
-
-    @GetMapping("/seller/{name}")
-    @ResponseStatus(HttpStatus.OK)
-    public Seller findAllBySellerName(@PathVariable String name){
-        return sellerService.findByName(name);
-    }
-
 }

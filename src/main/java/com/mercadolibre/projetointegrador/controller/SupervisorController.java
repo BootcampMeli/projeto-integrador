@@ -1,9 +1,8 @@
 package com.mercadolibre.projetointegrador.controller;
 
 
-import com.mercadolibre.projetointegrador.model.Buyer;
+import com.mercadolibre.projetointegrador.dtos.UserDTO;
 import com.mercadolibre.projetointegrador.model.Supervisor;
-import com.mercadolibre.projetointegrador.service.crud.impl.BuyerServiceImpl;
 import com.mercadolibre.projetointegrador.service.crud.impl.SupervisorServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -19,7 +18,7 @@ public class SupervisorController {
 
     private final SupervisorServiceImpl supervisorService;
 
-    @PostMapping
+    @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
     public Supervisor create(
             //TODO validate supervisor or admin
@@ -27,43 +26,24 @@ public class SupervisorController {
         return supervisorService.create(supervisor);
     }
 
-    @PutMapping("{id}")
-    @ResponseStatus(HttpStatus.CREATED)
-    public Supervisor update(
-            //TODO validate supervisor
-            @Valid @RequestBody Supervisor supervisor){
-        return supervisorService.update(supervisor);
+    @GetMapping("/all")
+    @ResponseStatus(HttpStatus.OK)
+    public List<UserDTO> findAllSupervisors(){
+        return supervisorService.findAllSupervisors();
     }
 
-    @DeleteMapping("/{id}")
+    @GetMapping("/id/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public String delete(
-            //TODO validate supervisor
-            @Valid @PathVariable Long id){
-        supervisorService.delete(id);
-        return "Buyer of Id " + id + " deleted.";
-    }
-
-    @GetMapping
-    @ResponseStatus(HttpStatus.OK)
-    public List<Supervisor> findAllSupervisors(){
-        return supervisorService.findAll();
-    }
-
-    @GetMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
-    public Supervisor findById(
-            //TODO validate buyer or supervisor
+    public UserDTO findSupervisorById(
             @PathVariable Long id){
-        return supervisorService.findById(id);
+        return supervisorService.findSupervisorById(id);
     }
 
-    @GetMapping("/{name}")
+    @GetMapping("/name/{name}")
     @ResponseStatus(HttpStatus.OK)
-    public Supervisor findByName(
-            //TODO validate buyer or supervisor
+    public UserDTO findByName(
             @PathVariable String name){
-        return supervisorService.findByName(name);
+        return supervisorService.findSupervisorByName(name);
     }
 
 }

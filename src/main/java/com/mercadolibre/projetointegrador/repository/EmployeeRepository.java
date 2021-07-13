@@ -13,4 +13,6 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long> {
     Optional<Employee> findByUsernameAndPassword(@Param("username") String username, @Param("password") String password);
 
     Optional<Employee> findByUsername(String username);
+
+    Optional<Employee> findByName(String name);
 }

@@ -1,10 +1,9 @@
 package com.mercadolibre.projetointegrador.controller;
 
 
+import com.mercadolibre.projetointegrador.dtos.UserDTO;
 import com.mercadolibre.projetointegrador.model.Employee;
-import com.mercadolibre.projetointegrador.model.Supervisor;
 import com.mercadolibre.projetointegrador.service.crud.impl.EmployeeServiceImpl;
-import com.mercadolibre.projetointegrador.service.crud.impl.SupervisorServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -19,51 +18,31 @@ public class EmployeeController {
 
     private final EmployeeServiceImpl employeeService;
 
-    @PostMapping
+    @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
     public Employee create(
-            //TODO validate supervisor or admin
             @Valid @RequestBody Employee employee){
         return employeeService.create(employee);
     }
 
-    @PutMapping("/{id}")
-    @ResponseStatus(HttpStatus.CREATED)
-    public Employee update(
-            //TODO validate supervisor
-            @Valid @RequestBody Employee employee){
-        return employeeService.update(employee);
-    }
-
-    @DeleteMapping("/{id}")
+    @GetMapping("/")
     @ResponseStatus(HttpStatus.OK)
-    public String delete(
-            //TODO validate supervisor
-            @Valid @PathVariable Long id){
-        employeeService.delete(id);
-        return "Buyer of Id " + id + " deleted.";
-    }
-
-    @GetMapping
-    @ResponseStatus(HttpStatus.OK)
-    public List<Employee> findAllEmployees(){
-        return employeeService.findAll();
+    public List<UserDTO> findAllEmployees(){
+        return employeeService.findAllEmployees();
     }
 
     @GetMapping("/id/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public Employee findById(
-            //TODO validate buyer or supervisor
+    public UserDTO findById(
             @PathVariable Long id){
-        return employeeService.findById(id);
+        return employeeService.findEmployeeById(id);
     }
 
-    @GetMapping("/employee/{name}")
+    @GetMapping("/name/{name}")
     @ResponseStatus(HttpStatus.OK)
-    public Employee findByName(
-            //TODO validate buyer or supervisor
+    public UserDTO findByName(
             @PathVariable String name){
-        return null /*employeeService.findByName(name)*/;
+        return employeeService.findEmployeeByName(name);
     }
 
 }

@@ -14,6 +14,10 @@ INSERT INTO `role` (`id`, `role_name`)
 SELECT * FROM (SELECT NULL, 'ROLE_ADMIN') AS tmp
 WHERE NOT EXISTS (SELECT role_name FROM role WHERE role_name = 'ROLE_ADMIN') LIMIT 1;
 
+INSERT INTO `role` (`id`, `role_name`)
+SELECT * FROM (SELECT NULL, 'ROLE_EMPLOYEE') AS tmp
+WHERE NOT EXISTS (SELECT role_name FROM role WHERE role_name = 'ROLE_EMPLOYEE') LIMIT 1;
+
 
 -- # US01 - Initial values
 --
@@ -38,9 +42,6 @@ INSERT IGNORE INTO `section` (`id`,`max_temperature`,`min_temperature`,`section_
 INSERT IGNORE INTO `section` (`id`,`max_temperature`,`min_temperature`,`section_code`,`warehouse_id`) VALUES (8,10,0,'2',3);
 INSERT IGNORE INTO `section` (`id`,`max_temperature`,`min_temperature`,`section_code`,`warehouse_id`) VALUES (9,0,-10,'3',3);
 --
--- # Insert Employees
---
-ALTER TABLE employee ROW_FORMAT = DYNAMIC;
 --
 -- # Insert Users
 
@@ -123,17 +124,17 @@ UPDATE `g3projdb`.`section` SET `section_code` = 'FS', `max_temperature` = 10, `
 
 -- # Set Roles to Users
 -- Supervisor
-INSERT INTO user_role VALUES(1, 1);
-INSERT INTO user_role VALUES(2, 1);
+INSERT IGNORE INTO user_role VALUES(1, 1);
+INSERT IGNORE INTO user_role VALUES(2, 1);
 -- Admin
-INSERT INTO user_role VALUES(1, 4);
-INSERT INTO user_role VALUES(2, 4);
+INSERT IGNORE INTO user_role VALUES(1, 4);
+INSERT IGNORE INTO user_role VALUES(2, 4);
 -- Seller
-INSERT INTO user_role VALUES(5, 3);
-INSERT INTO user_role VALUES(6, 3);
-INSERT INTO user_role VALUES(7, 3);
+INSERT IGNORE INTO user_role VALUES(5, 3);
+INSERT IGNORE INTO user_role VALUES(6, 3);
+INSERT IGNORE INTO user_role VALUES(7, 3);
 -- Buyer
-INSERT INTO user_role VALUES(8, 2);
-INSERT INTO user_role VALUES(9, 2);
-INSERT INTO user_role VALUES(10, 2);
-INSERT INTO user_role VALUES(11, 2);
+INSERT IGNORE INTO user_role VALUES(8, 2);
+INSERT IGNORE INTO user_role VALUES(9, 2);
+INSERT IGNORE INTO user_role VALUES(10, 2);
+INSERT IGNORE INTO user_role VALUES(11, 2);

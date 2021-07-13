@@ -17,7 +17,7 @@ public class BuyerController {
 
     private final BuyerServiceImpl buyerService;
 
-    @PostMapping
+    @PostMapping("/create")
     @ResponseStatus(HttpStatus.CREATED)
     public Buyer create(
             //TODO validate buyer or supervisor
@@ -25,41 +25,22 @@ public class BuyerController {
         return buyerService.create(buyer);
     }
 
-    @PutMapping("{id}")
-    @ResponseStatus(HttpStatus.CREATED)
-    public Buyer update(
-            //TODO validate buyer or supervisor
-            @Valid @RequestBody Buyer buyer){
-        return buyerService.update(buyer);
-    }
-
-    @DeleteMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
-    public String delete(
-            //TODO validate buyer or supervisor
-            @Valid @PathVariable Long id){
-        buyerService.delete(id);
-        return "Buyer of Id " + id + " deleted.";
-    }
-
-    @GetMapping
+    @GetMapping("/buyers")
     @ResponseStatus(HttpStatus.OK)
     public List<Buyer> findAllBuyers(){
         return buyerService.findAll();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/id/{id}")
     @ResponseStatus(HttpStatus.OK)
     public Buyer findById(
-            //TODO validate buyer or supervisor
             @PathVariable Long id){
         return buyerService.findById(id);
     }
 
-    @GetMapping("/{name}")
+    @GetMapping("/name/{name}")
     @ResponseStatus(HttpStatus.OK)
     public Buyer findByName(
-            //TODO validate buyer or supervisor
             @PathVariable String name){
         return buyerService.findByName(name);
     }
