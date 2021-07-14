@@ -1,4 +1,5 @@
 Postman: https://documenter.getpostman.com/view/15851780/Tzm9iZzc
+
 Sawgger: http://localhost:8082/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config
 
 ## Day 1 -> Class Diagram
