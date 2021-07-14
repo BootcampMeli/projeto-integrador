@@ -39,6 +39,12 @@ public class ProductServiceImpl implements ICRUD<Product> {
         return productRepository.save(product);
     }
 
+    public Product create(Product product, Long id) {
+        product.setSeller(sellerRepository.findById(id)
+                .orElseThrow(() -> new NotFoundException("Seller não encontrado")));
+        return productRepository.save(product);
+    }
+
     @Override
     public Product update(Product product) {
         productRepository.findById(product.getId());

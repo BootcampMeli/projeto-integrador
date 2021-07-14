@@ -9,8 +9,8 @@ spring:
     #db: ${SECRET_DATABASE}
     db: g3projdb
 
-    username:
-    password:
+    username: ${SECRET_USER}
+    password: ${SECRET_PASS}
 
     #username:
     #password:

@@ -34,6 +34,16 @@ public class ProductController {
     public Product create(@Valid @RequestBody Product product){
         return productService.create(product);
     }
+    @Operation(summary = "US06 - Products - Create a new product", responses = {
+            @ApiResponse(description = "Successful Operation", responseCode = "201",
+                    content = @Content(mediaType = "application/json",
+                            schema = @Schema(implementation = Product.class)))
+    })
+    @PostMapping("/seller/{id}/create")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Product createWithSellerId(@Valid @RequestBody Product product, @PathVariable Long id){
+        return productService.create(product, id);
+    }
 
     @Operation(summary = "US02 - Get all Products", responses = {
             @ApiResponse(description = "Successful Operation", responseCode = "200",

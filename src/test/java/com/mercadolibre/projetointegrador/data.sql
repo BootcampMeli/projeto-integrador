@@ -33,15 +33,15 @@ INSERT INTO `warehouse` (`id`,`name`) VALUES (6,'MinasGerais1');
 --
 -- # Insert Sections
 --
-INSERT INTO `section` (`id`,`max_temperature`,`min_temperature`,`section_code`,`warehouse_id`) VALUES (1,20,10,'1',1);
-INSERT INTO `section` (`id`,`max_temperature`,`min_temperature`,`section_code`,`warehouse_id`) VALUES (2,10,0,'2',1);
-INSERT INTO `section` (`id`,`max_temperature`,`min_temperature`,`section_code`,`warehouse_id`) VALUES (3,0,-10,'3',1);
-INSERT INTO `section` (`id`,`max_temperature`,`min_temperature`,`section_code`,`warehouse_id`) VALUES (4,20,10,'1',2);
-INSERT INTO `section` (`id`,`max_temperature`,`min_temperature`,`section_code`,`warehouse_id`) VALUES (5,10,0,'2',2);
-INSERT INTO `section` (`id`,`max_temperature`,`min_temperature`,`section_code`,`warehouse_id`) VALUES (6,0,-10,'3',2);
-INSERT INTO `section` (`id`,`max_temperature`,`min_temperature`,`section_code`,`warehouse_id`) VALUES (7,20,10,'1',3);
-INSERT INTO `section` (`id`,`max_temperature`,`min_temperature`,`section_code`,`warehouse_id`) VALUES (8,10,0,'2',3);
-INSERT INTO `section` (`id`,`max_temperature`,`min_temperature`,`section_code`,`warehouse_id`) VALUES (9,0,-10,'3',3);
+INSERT INTO `section` (`id`,`max_temperature`,`min_temperature`,`section_code`,`warehouse_id`) VALUES (1,20,10,'FS',1);
+INSERT INTO `section` (`id`,`max_temperature`,`min_temperature`,`section_code`,`warehouse_id`) VALUES (2,10,0,'RS',1);
+INSERT INTO `section` (`id`,`max_temperature`,`min_temperature`,`section_code`,`warehouse_id`) VALUES (3,0,-10,'FF',1);
+INSERT INTO `section` (`id`,`max_temperature`,`min_temperature`,`section_code`,`warehouse_id`) VALUES (4,20,10,'FS',2);
+INSERT INTO `section` (`id`,`max_temperature`,`min_temperature`,`section_code`,`warehouse_id`) VALUES (5,10,0,'RS',2);
+INSERT INTO `section` (`id`,`max_temperature`,`min_temperature`,`section_code`,`warehouse_id`) VALUES (6,0,-10,'FF',2);
+INSERT INTO `section` (`id`,`max_temperature`,`min_temperature`,`section_code`,`warehouse_id`) VALUES (7,20,10,'FS',3);
+INSERT INTO `section` (`id`,`max_temperature`,`min_temperature`,`section_code`,`warehouse_id`) VALUES (8,10,0,'RS',3);
+INSERT INTO `section` (`id`,`max_temperature`,`min_temperature`,`section_code`,`warehouse_id`) VALUES (9,0,-10,'FF',3);
 --
 --
 -- # Insert Users
@@ -118,10 +118,12 @@ INSERT INTO `inbound_order_batch_stock` (`inbound_order_id`, `batch_stock_id`) V
 --
 -- # Update section codes
 --
-UPDATE `g3projdb`.`section` SET `section_code` = 'RS', `max_temperature` = 5, `min_temperature` = 0   WHERE (`section_code` = '2');
-UPDATE `g3projdb`.`section` SET `section_code` = 'FF', `max_temperature` = -10, `min_temperature` = -25   WHERE (`section_code` = '3');
-UPDATE `g3projdb`.`section` SET `section_code` = 'FS', `max_temperature` = 10, `min_temperature` = 4  WHERE (`section_code` = '1');
+/*
+UPDATE `section` SET `section_code` = 'RS', `max_temperature` = 5, `min_temperature` = 0   WHERE (`section_code` = '2');
+UPDATE `section` SET `section_code` = 'FF', `max_temperature` = -10, `min_temperature` = -25   WHERE (`section_code` = '3');
+UPDATE `section` SET `section_code` = 'FS', `max_temperature` = 10, `min_temperature` = 4  WHERE (`section_code` = '1');
 --
+ */
 
 -- # Set Roles to Users
 -- Supervisor

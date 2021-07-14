@@ -23,7 +23,6 @@ WHERE NOT EXISTS (SELECT role_name FROM role WHERE role_name = 'ROLE_EMPLOYEE') 
 --
 -- # Insert Warehouses
 --
-/*
 INSERT IGNORE INTO `warehouse` (`id`,`name`) VALUES (1,'Nordeste');
 INSERT IGNORE INTO `warehouse` (`id`,`name`) VALUES (2,'SãoPaulo1');
 INSERT IGNORE INTO `warehouse` (`id`,`name`) VALUES (3,'SãoPaulo2');
@@ -50,7 +49,7 @@ INSERT IGNORE INTO `user` (`id`,`email`,`name`,`password`,`username`) VALUES (1,
 INSERT IGNORE INTO `user` (`id`,`email`,`name`,`password`,`username`) VALUES (2,'paulo@warehouse.com','Paulo','39v4785n','paulo');
 INSERT IGNORE INTO `user` (`id`,`email`,`name`,`password`,`username`) VALUES (3,'elisa@warehouse.com','Elisa','30b469u8','elisa');
 INSERT IGNORE INTO `user` (`id`,`email`,`name`,`password`,`username`) VALUES (4,'maria@warehouse.com','Maria','2xein4988','maria');
-INSERT IGNORE INTO `user` (`id`,`email`,`name`,`password`,`username`) VALUES (5,'ricardo@warehouse.com','Ricardo','3onf7rty','ricardo');
+INSERT IGNORE INTO `user` (`id`,`email`,`name`,`password`,`username`) VALUES (5,'defaultseller@warehouse.com','Default','3onf34vtg4u7n7rty','default');
 INSERT IGNORE INTO `user` (`id`,`email`,`name`,`password`,`username`) VALUES (6,'joao@warehouse.com','João','dfo3289gh5','joao');
 INSERT IGNORE INTO `user` (`id`,`email`,`name`,`password`,`username`) VALUES (7,'sabrina@warehouse.com','Sabrina','1qas346g','sabrina');
 INSERT IGNORE INTO `user` (`id`,`email`,`name`,`password`,`username`) VALUES (8,'bruno@warehouse.com','Bruno','954ght4h6','bruno');
@@ -110,7 +109,7 @@ INSERT IGNORE INTO `batch` (`id`,`current_quantity`,`current_temperature`,`due_d
 INSERT IGNORE INTO `batch` (`id`,`current_quantity`,`current_temperature`,`due_date`,`initial_quantity`,`manufacturing_date`,`manufacturing_time`,`max_temperature`,`min_temperature`,`product_id`) VALUES (4,6,18,'2021-07-22',2,'2012-06-22','2012-06-22 05:33:00.000000',20,15,4);
 INSERT IGNORE INTO `batch` (`id`,`current_quantity`,`current_temperature`,`due_date`,`initial_quantity`,`manufacturing_date`,`manufacturing_time`,`max_temperature`,`min_temperature`,`product_id`) VALUES (5,7,-2,'2021-09-01',1,'2012-06-07','2012-06-07 07:15:00.000000',0,-5,5);
 --
--- # Create inboundo order 1 to batch stock 1
+-- # Create inbound order 1 to batch stock 1
 --
 INSERT IGNORE INTO `inbound_order_batch_stock` (`inbound_order_id`, `batch_stock_id`) VALUES ('1', '1');
 --
@@ -139,4 +138,3 @@ INSERT IGNORE INTO user_role VALUES(8, 2);
 INSERT IGNORE INTO user_role VALUES(9, 2);
 INSERT IGNORE INTO user_role VALUES(10, 2);
 INSERT IGNORE INTO user_role VALUES(11, 2);
-*/
