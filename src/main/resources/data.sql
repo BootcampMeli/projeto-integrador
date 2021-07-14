@@ -116,11 +116,11 @@ INSERT IGNORE INTO `inbound_order_batch_stock` (`inbound_order_id`, `batch_stock
 -- # US02 - Update values and conditions
 --
 -- # Update section codes
---
+--/*
 UPDATE `g3projdb`.`section` SET `section_code` = 'RS', `max_temperature` = 5, `min_temperature` = 0   WHERE (`section_code` = '2');
 UPDATE `g3projdb`.`section` SET `section_code` = 'FF', `max_temperature` = -10, `min_temperature` = -25   WHERE (`section_code` = '3');
 UPDATE `g3projdb`.`section` SET `section_code` = 'FS', `max_temperature` = 10, `min_temperature` = 4  WHERE (`section_code` = '1');
---
+--*/
 
 -- # Set Roles to Users
 -- Supervisor

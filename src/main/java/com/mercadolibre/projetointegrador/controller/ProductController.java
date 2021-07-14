@@ -34,7 +34,7 @@ public class ProductController {
     public Product create(@Valid @RequestBody Product product){
         return productService.create(product);
     }
-    @Operation(summary = "US06 - Products - Create a new product", responses = {
+    @Operation(summary = "US06 - Products - Create a new product with a specified seller id", responses = {
             @ApiResponse(description = "Successful Operation", responseCode = "201",
                     content = @Content(mediaType = "application/json",
                             schema = @Schema(implementation = Product.class)))
