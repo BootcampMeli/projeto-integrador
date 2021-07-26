@@ -4,10 +4,10 @@
 
 spring:
   datasource:
-    host: localhost:3306
-    #host: proxysql.master.meliseginf.com:6612
+    #host: localhost:3306
+    host: proxysql.master.meliseginf.com:6612
     #db: ${SECRET_DATABASE}
-    db: g3projdb
+    db: {SECRET_DATABASE}
 
     username: ${SECRET_USER}
     password: ${SECRET_PASS}
@@ -25,4 +25,4 @@ spring:
 
 
 server:
-  port: 8082 # no cambiar en prod
+  port: 8083 # no cambiar en prod
